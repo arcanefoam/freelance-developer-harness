@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  azure-cli:
+    build: .
+    container_name: az-cli-devops
+    volumes:
+      # Persists your 'az login' credentials on your host machine
+      - ~/.azure:/root/.azure
+      # Mounts your current directory to access local scripts or templates
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
