@@ -10,7 +10,7 @@ set -euo pipefail
 HARNESS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ENV_FILE="$HARNESS_DIR/.env"
 ENV_TEMPLATE="$HARNESS_DIR/.env.template"
-CLAUDE_MD="$HARNESS_DIR/CLAUDE.md"
+AGENT_MD="$HARNESS_DIR/AGENT.md"
 
 # ── Colours ──────────────────────────────────────────────────────────────────
 GREEN='\033[0;32m'
@@ -96,14 +96,24 @@ ANTHROPIC_API_KEY=$(prompt "Anthropic API key (for Claude)" "${current_anthropic
 current_google=$(load_env_var GOOGLE_API_KEY)
 GOOGLE_API_KEY=$(prompt "Google API key (for Gemini)" "${current_google:-}")
 
+current_venice=$(load_env_var VENICE_API_KEY)
+VENICE_API_KEY=$(prompt "Venice API key" "${current_venice:-}")
+
 # ── Step 4: Version control ───────────────────────────────────────────────────
-header "Step 4 — Version control (optional)"
+#header "Step 4 — Version control (optional)"
+#
+#current_gh=$(load_env_var GITHUB_TOKEN)
+#GITHUB_TOKEN=$(prompt "GitHub personal access token" "${current_gh:-}")
+#
+#current_org=$(load_env_var ORG_GITHUB_ORG)
+#GITHUB_ORG=$(prompt "GitHub org or username" "${current_org:-}")
 
-current_gh=$(load_env_var GITHUB_TOKEN)
-GITHUB_TOKEN=$(prompt "GitHub personal access token" "${current_gh:-}")
+# ── Step 4: Project management ───────────────────────────────────────────────────
+header "Step 4 — Project management (optional)"
 
-current_org=$(load_env_var ORG_GITHUB_ORG)
-GITHUB_ORG=$(prompt "GitHub org or username" "${current_org:-}")
+current_az_org=$(load_env_var AZURE_ORG)
+AZURE_ORG=$(prompt "Azure organization (e.g. https://dev.azure.com/myorg)" "${current_az_org:-}")
+
 
 # ── Write .env ────────────────────────────────────────────────────────────────
 header "Writing .env..."
@@ -135,16 +145,16 @@ set_env_var ORG_GITHUB_ORG   "$GITHUB_ORG"
 
 ok ".env written"
 
-# ── Patch CLAUDE.md studio name ───────────────────────────────────────────────
-if grep -q '{{STUDIO_NAME}}' "$CLAUDE_MD"; then
+# ── Patch AGENT.md studio name ───────────────────────────────────────────────
+if grep -q '{{STUDIO_NAME}}' "$AGENT_MD"; then
   if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' "s|{{STUDIO_NAME}}|${STUDIO_NAME}|g" "$CLAUDE_MD"
+    sed -i '' "s|{{STUDIO_NAME}}|${STUDIO_NAME}|g" "$AGENT_MD"
   else
-    sed -i "s|{{STUDIO_NAME}}|${STUDIO_NAME}|g" "$CLAUDE_MD"
+    sed -i "s|{{STUDIO_NAME}}|${STUDIO_NAME}|g" "$AGENT_MD"
   fi
-  ok "CLAUDE.md updated with studio name: $STUDIO_NAME"
+  ok "AGENT.md updated with studio name: $STUDIO_NAME"
 else
-  ok "CLAUDE.md already has studio name set"
+  ok "AGENT.md already has studio name set"
 fi
 
 # ── Done ──────────────────────────────────────────────────────────────────────
@@ -162,7 +172,7 @@ echo "     (enables automatic PM routing for all prompts)"
 echo ""
 echo "  Reference:"
 echo "  - SETUP.md        — overview and quick-start"
-echo "  - CLAUDE.md       — full operating model"
+echo "  - AGENT.md        — full operating model"
 echo "  - AGENTS.md       — team roster and governance"
 echo "  - docs/onboarding.md — team guide"
 echo ""

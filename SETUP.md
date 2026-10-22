@@ -1,6 +1,26 @@
 # Getting Started
 
-The Freelance Developer Harness is a Claude Code operating system for running a structured agency team across multiple client projects. It gives you 25 specialized roles (architects, designers, developers, hardware engineers, QA, security) organized into four councils, enforced quality gates, and an automated PM-driven workflow.
+The Freelance Developer Harness is a AI Agent operating system for running a structured agency team across multiple 
+client projects. It gives you specialized roles (architects, designers, developers, QA, security) organized into three
+councils, enforced quality gates, and an automated PM-driven workflow.
+
+## Prerequisites
+
+The Agent uses the Azure CLI to get the state of work items related to the project.
+
+```bash
+# Install Azure DevOps extension (one-time)
+az extension add --name azure-devops
+
+# Login to Azure to save credentials, authentication is done via browser.
+az login
+
+# Set default organization and project
+az devops configure --defaults organization=https://dev.azure.com/<org> project=<project>
+
+# Verify authentication
+az devops user show --output table
+```
 
 ## Quick start
 
@@ -59,7 +79,7 @@ The harness holds intent (specs, briefs, deliverables). Source code lives in sep
 ## Full documentation
 
 - `README.md` — architecture, diagrams, how pieces connect
-- `CLAUDE.md` — complete operating model (loaded automatically by Claude Code)
+- `AGENT.md` — complete operating model (loaded automatically by Claude Code)
 - `AGENTS.md` — team roster, authorities, governance matrix
 - `docs/onboarding.md` — team guide
 - `docs/workflows/` — detailed per-stage workflow docs

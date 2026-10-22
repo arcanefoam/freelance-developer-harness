@@ -6,7 +6,7 @@ You are running **Sprint Planning** for: $ARGUMENTS
 
 ## Where this sprint lives
 
-Per-project sprint tracking convention (see `CLAUDE.md` → Multi-Client Governance).
+Per-project sprint tracking convention (see `AGENT.md` → Multi-Client Governance).
 
 All sprint files live under:
 
@@ -70,7 +70,6 @@ PM assigns each backlog item to the appropriate council and owner.
 
 **Creative Council:** Innovation Lead, UX Researcher, UI Designer, Creative Director
 **Technical Council:** Solution Architect, Frontend, Backend, Apple Platform, LLM, Blockchain, Security
-**Hardware Council** *(hardware/hybrid only)*: Hardware PM, EE, ME, Firmware, Industrial Designer, Manufacturing, Supply Chain, Certification, Hardware Security
 **Delivery Council:** Technical Writer, QA Specialist, GitHub & VC Specialist
 
 ## Step 4: Dependency Mapping
@@ -92,7 +91,7 @@ For each high-complexity item: what could go wrong, what is the mitigation.
 
    Leave the `## Retrospective` section empty — `/retro` fills it on close.
 
-2. Update the `CURRENT` symlink to point at the new file:
+1. Update the `CURRENT` symlink to point at the new file:
 
    ```bash
    ( cd "$SPRINTS_DIR" && ln -sfn "$NUMBER.md" CURRENT )
@@ -101,7 +100,30 @@ For each high-complexity item: what could go wrong, what is the mitigation.
    On macOS/Linux `ln -sfn` atomically replaces an existing symlink. Do not
    commit a regular file named `CURRENT` — it must be a symlink.
 
-3. Report to the user:
+1. Add the sprint to the Azure iterations
+
+   ```bash
+   az boards iteration project create \
+     --name "$NUMBER" \ 
+     --start-date "$START_DATE" \
+     --finish-date "$END_DATE" \
+     --project "$PROJECT_SLUG" \
+     --organization "$AZURE_ORG"
+   ```
+1. Activate the iteration for the team
+
+   ```bash
+   az boards iteration team add \
+    --id "$NUMBER" \
+    --team "Frontend Team" \
+    --project "{{PROJECT_SLUG}}" \
+    --organization "$AZURE_ORG"
+   ``` 
+
+1. Report to the user:
    - Path of the new sprint file
    - Sprint number and goal
    - Confirmation that `CURRENT` now points at it
+   - Confirmation that the Azure iteration was created
+
+
