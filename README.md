@@ -2,12 +2,8 @@
 
 > Where vision meets execution.
 
-[![GitHub stars](https://img.shields.io/github/stars/10Legs/freelance-developer-harness?style=social)](https://github.com/10Legs/freelance-developer-harness/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Built for Claude Code](https://img.shields.io/badge/built%20for-Claude%20Code-7C3AED)](https://claude.com/claude-code)
-
-A structured agency operating system for [Claude Code](https://claude.com/claude-code). Turns one assistant into a full team — Product Manager, 
-four councils of specialists, and enforced quality gates — that runs your client work end-to-end.
+A structured agency operating system for AI Agents. Turns one assistant into a full team — Product Manager, 
+councils of specialists, and enforced quality gates — that runs your client work end-to-end.
 
 ---
 
@@ -58,8 +54,8 @@ flowchart LR
 **Three councils, one PM.** The PM never implements — it directs. Specialists do the work. Gates block the pipeline 
 until quality criteria are met.
 
-**Session-scoped client locking.** `/use-client <slug> <project>` locks a Code Agent session to one workspace. Every 
-prompt thereafter auto-scopes to the right client, the right project, the right source root. Multiple sessions can 
+**Session-scoped client locking.** `/use-client <slug> <project> <team>` locks a Code Agent session to one workspace. 
+Every prompt thereafter auto-scopes to the right client, the right project, the right source root. Multiple sessions can 
 target different clients with zero cross-contamination.
 
 **Hooks inject context automatically.** On every prompt, hooks read your session lock and inject the active client, 
@@ -75,7 +71,7 @@ Sessions with no lock set are unrestricted, so run `/use-client` before touching
 
 ## Team Roster
 
-Twenty-five agents across three councils, all directed by the Product Manager.
+Fourteen agents across three councils, all directed by the Product Manager.
 
 ```mermaid
 flowchart TB
@@ -110,24 +106,24 @@ flowchart TB
     style DC fill:#FED7AA,stroke:#EA580C,color:#000
 ```
 
-| Role | Council | Responsibility |
-|------|---------|---------------|
-| Product Manager | *Leadership* | Owns roadmap; routes epics to councils; drives pipeline |
-| Account Lead | *Leadership* | Client interface; signs briefs; manages stakeholder comms |
-| Creative Director | Creative | Vision, brand, design system oversight |
-| Innovation Lead | Creative | Ideation, breakthrough thinking, design sprints |
-| UX Researcher | Creative | User insights, personas, journey maps, usability testing |
-| UI Designer | Creative | Visual design, interaction design, prototyping |
-| Solution Architect | Technical | System design, ADRs, technical governance gate |
-| Frontend Developer | Technical | UI implementation, component architecture |
-| Backend Developer | Technical | APIs, services, data architecture |
-| Apple Platform Engineer | Technical | macOS / iOS / watchOS / tvOS; Swift, SwiftUI, AppKit, notarization |
-| LLM Engineer | Technical | Inference, prompts, providers, RAG, eval |
-| Blockchain Engineer | Technical | EVM chains, Solidity, Foundry; Bitcoin, Lightning, BDK |
-| Security Reviewer | Technical | Threat modeling, audits, compliance sign-off |
-| Technical Writer | Delivery | Documentation, client deliverables, knowledge base |
-| QA Specialist | Delivery | Quality gates, acceptance criteria, test automation |
-| GitHub & VC Specialist | Delivery | Branch hygiene, PR health, release readiness (advisory — never opens or merges) |
+| Role                      | Council | Responsibility                                                                   |
+|---------------------------|---------|----------------------------------------------------------------------------------|
+| Product Manager           | *Leadership* | Owns roadmap; routes epics to councils; drives pipeline                      |
+| Account Lead              | *Leadership* | Client interface; signs briefs; manages stakeholder comms                    |
+| Creative Director         | Creative | Vision, brand, design system oversight                                           |
+| Innovation Lead           | Creative | Ideation, breakthrough thinking, design sprints                                  |
+| UX Researcher             | Creative | User insights, personas, journey maps, usability testing                         |
+| UI Designer               | Creative | Visual design, interaction design, prototyping                                   |
+| Solution Architect        | Technical | System design, ADRs, technical governance gate                                  |
+| Frontend Developer        | Technical | UI implementation, component architecture                                       |
+| Backend Developer         | Technical | APIs, services, data architecture                                               |
+| Apple Platform Engineer   | Technical | macOS / iOS / watchOS / tvOS; Swift, SwiftUI, AppKit, notarization              |
+| Android Platform Engineer | Technical | android / wareOS ; Kotlin, Java, Jetpack Compose, SQLite                        |
+| LLM Engineer              | Technical | Inference, prompts, providers, RAG, eval                                        |
+| Security Reviewer         | Technical | Threat modeling, audits, compliance sign-off                                    |
+| Technical Writer          | Delivery | Documentation, client deliverables, knowledge base                               |
+| QA Specialist             | Delivery | Quality gates, acceptance criteria, test automation                              |
+| GitHub & VC Specialist    | Delivery | Branch hygiene, PR health, release readiness (advisory — never opens or merges)  |
 
 ---
 
@@ -158,12 +154,12 @@ freelance-developer-harness/
 ├── docs/                  # SOPs, workflows, onboarding, refit records
 ├── scripts/
 │   ├── setup.sh                 # Interactive first-time configuration
-├── CLAUDE.md              # Routing table, gates, and traps — loaded automatically by Claude Code
+├── AGENT.md              # Routing table, gates, and traps — loaded automatically by Claude Code
 ├── AGENTS.md              # Team roster, authorities, gates, governance matrix
 └── README.md
 ```
 
-Source code lives **outside** the harness, in `$SOURCE_ROOT_BASE/<project-slug>/` (configured in `.env`). The harness 
+Source code lives **outside** the harness, in the project repo `$SOURCE_ROOT_BASE/<project-slug>/` (configured in `.env`). The harness 
 holds intent — briefs, specs, ADRs, deliverables. The project repo holds implementation.
 
 ---
@@ -182,11 +178,11 @@ $EDITOR .env             # set STUDIO_NAME, SOURCE_ROOT_BASE, GITHUB_USERNAME, e
 # 3. Run setup — patches AGENT.md with your studio identity
 bash scripts/setup.sh
 
-# 4. Open in Claude Code, then onboard your first client
+# 4. Open in AI App or IDE, then onboard your first client
 /onboard-client acme-corp
 
 # 5. Lock the session and start working
-/use-client acme-corp storefront
+/use-client acme-corp storefront dev
 /pm build the checkout flow
 ```
 
@@ -200,11 +196,11 @@ want a clean slate, snapshot it and reset.
 ```mermaid
 sequenceDiagram
     actor You
-    participant CC as Claude Code
+    participant CC as AI Agent
     participant PM as Product Manager
     participant Councils as Councils + Gates
 
-    You->>CC: /use-client acme storefront
+    You->>CC: /use-client acme storefront dev
     Note over CC: Session locked — every prompt<br/>auto-scopes to this workspace
     You->>PM: /pm build the checkout flow
     PM->>Councils: break into epics, route, hold at gates
@@ -224,22 +220,22 @@ accumulating stale or hallucinated context — instead of `/compact`, you carry 
 
 ## Key Commands
 
-| Command | What it does |
-|---------|--------------|
-| `/use-client <slug> <project>` | Lock the session to a client + project (session-scoped, isolated) |
-| `/onboard-client <slug>` | Create a new client workspace from the template |
-| `/pm <task>` | Run the PM end-to-end on a task; spawns the right agents and walks the gates |
-| `/pm on` / `/pm off` | Toggle persistent PM mode — every subsequent prompt is auto-routed |
-| `/mode` | Toggle permission mode (default / acceptEdits / plan / bypass) for the active session |
-| `/intake` | Structured intake for a new piece of work — PM produces a delegation plan |
-| `/kickoff` | Full project kickoff: discovery, scope, initial backlog |
-| `/sprint-plan` | Plan the next sprint into `clients/.../sprints/sprint-NNN.md` and repoint `CURRENT` |
-| `/retro` | Close the active sprint: stamp closed_date, write retro into the sprint file |
-| `/arch-review` | Architecture review with Solution Architect as gate |
-| `/design-review` | Design review with Creative Director + UX gates |
-| `/ideate` | Structured ideation session led by Innovation Lead |
-| `/client-report` | Generate a client status report |
-| `/handoff-session` | Snapshot the session into a paste-ready handoff prompt (auto-copied to clipboard) for a clean context reset |
+| Command                               | What it does                                                                                                |
+|---------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `/use-client <slug> <project> <team>` | Lock the session to a client + project (session-scoped, isolated) + team                                    |
+| `/onboard-client <slug>`              | Create a new client workspace from the template                                                             |
+| `/pm <task>`                          | Run the PM end-to-end on a task; spawns the right agents and walks the gates                                |
+| `/pm on` / `/pm off`                  | Toggle persistent PM mode — every subsequent prompt is auto-routed                                          |
+| `/mode`                               | Toggle permission mode (default / acceptEdits / plan / bypass) for the active session                       |
+| `/intake`                             | Structured intake for a new piece of work — PM produces a delegation plan                                   |
+| `/kickoff`                            | Full project kickoff: discovery, scope, initial backlog                                                     |
+| `/sprint-plan`                        | Plan the next sprint into `clients/.../sprints/sprint-NNN.md` and repoint `CURRENT`                         |
+| `/retro`                              | Close the active sprint: stamp closed_date, write retro into the sprint file                                |
+| `/arch-review`                        | Architecture review with Solution Architect as gate                                                         |
+| `/design-review`                      | Design review with Creative Director + UX gates                                                             |
+| `/ideate`                             | Structured ideation session led by Innovation Lead                                                          |
+| `/client-report`                      | Generate a client status report                                                                             |
+| `/handoff-session`                    | Snapshot the session into a paste-ready handoff prompt (auto-copied to clipboard) for a clean context reset |
 
 ---
 
@@ -318,5 +314,7 @@ clients/<client>/projects/<project>/sprints/
     definition of done, and an embedded retrospective section.
 
 This is the only source of sprint truth. Specs, ADRs, and PM summaries continue to live in `specs/`.
+
+Sprints are also added to the PM tool to track progress.
 
 ---

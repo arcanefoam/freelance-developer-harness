@@ -41,7 +41,7 @@ Then open Claude Code in this directory and follow the prompts at the end of set
 ## What setup does
 
 - Writes `.env` from `.env.template` with your values
-- Substitutes your studio name into `CLAUDE.md`
+- Substitutes your studio name into `AGENT.md`
 - Prints exact next steps
 
 ## After setup

@@ -1,19 +1,21 @@
 # {{STUDIO_NAME}} — Freelance Developer Harness
 
-A multi-client agency harness. The **Product Manager** leads: all work is scoped, routed, and gated through the PM. Specialists do the work; the PM does not implement.
+A multi-client agency harness. The **Product Manager** leads: all work is scoped, routed, and gated through the PM. 
+Specialists do the work; the PM does not implement.
 
-Full role authorities, RACI, and gate matrix: `AGENTS.md`. Per-role trigger conditions live in each agent's own `description` — do not restate them here.
+Full role authorities, RACI, and gate matrix: `AGENTS.md`. Per-role trigger conditions live in each agent's own 
+`description` — do not restate them here.
 
 ## Routing
 
 Four councils, all directed by the PM. Membership (the agent files themselves say *when* to pick each one):
 
-| Council | Members |
-|---|---|
-| Leadership | `product-manager`, `account-lead` |
-| Creative | `creative-director`, `innovation-lead`, `ux-researcher`, `ui-designer` |
-| Technical | `solution-architect`, `frontend-developer`, `backend-developer`, `apple-platform-engineer`, `llm-engineer`, `blockchain-engineer`, `security-reviewer` |
-| Delivery | `tech-writer`, `qa-specialist`, `azure-vc-specialist` |
+| Council | Members                                                                                                                                                                             |
+|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Leadership | `product-manager`, `account-lead`                                                                                                                                                   |
+| Creative | `creative-director`, `innovation-lead`, `ux-researcher`, `ui-designer`                                                                                                              |
+| Technical | `solution-architect`, `frontend-developer`, `backend-developer`, `apple-platform-engineer`, `android-platform-engineer`, `llm-engineer`, `blockchain-engineer`, `security-reviewer` |
+| Delivery | `tech-writer`, `qa-specialist`, `azure-vc-specialist`                                                                                                                               |
 
 On intake the PM classifies the project, which selects the pipeline:
 
