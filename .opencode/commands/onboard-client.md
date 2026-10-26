@@ -31,9 +31,9 @@ clients/{{CLIENT_SLUG}}/
 
 Populate `clients/{{CLIENT_SLUG}}/brief.md` with known information and mark unknowns with `[TBD]`.
 
-## Step 4: Update CLAUDE.md
+## Step 4: Update AGENT.md
 
-Add the client to the Active Clients table in CLAUDE.md.
+Add the client to the Active Clients table in AGENT.md.
 
 ## Step 5: Generate Team Briefing
 

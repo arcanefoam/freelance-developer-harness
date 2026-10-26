@@ -1,0 +1,26 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "venice": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.venice.ai/api/v1",
+        "apiKey": "{env:VENICE_API_KEY}"
+      },
+      "models": {
+        "muse-wonder": { "name": "Muse Wonder" },
+        "abliteration-abliterated-model-large-v2": { "name": "Abliterated Large V2" },
+        "claude-sonnet-5-5": { "name": "Claude Sonnet 5.5" }
+      }
+    }
+  },
+  "agents": {
+    "orchestrator": {
+      "permissions": [
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+        { "action": "subagent", "resource": "innovation-lead", "effect": "allow" },
+        { "action": "subagent", "resource": "red-team", "effect": "allow" }
+      ]
+    }
+  }
+}

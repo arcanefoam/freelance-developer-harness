@@ -6,7 +6,7 @@ You are facilitating a **Retrospective** for: $ARGUMENTS
 
 ## Where this retro lives
 
-Per-project sprint tracking convention (see `CLAUDE.md` → Multi-Client Governance).
+Per-project sprint tracking convention (see `AGENT.md` → Multi-Client Governance).
 
 The retro **lives inside the sprint file**, not in a separate document.
 The active sprint is found via the `CURRENT` symlink:

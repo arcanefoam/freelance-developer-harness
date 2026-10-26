@@ -166,7 +166,7 @@ The SESSION_ID is injected into the system prompt as `SESSION_ID = <value>`. Rea
        "Read(**)",
        "Write(clients/**)",
        "Write(patterns/**)",
-       "Write(.claude/sessions/*)",
+       "Write(.opencode/sessions/*)",
        "Edit(clients/**)",
        "Edit(patterns/**)"
      ],

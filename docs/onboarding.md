@@ -37,7 +37,7 @@ The gates are:
 
 ## Getting Set Up
 
-1. Run `bash scripts/setup.sh` — the wizard configures `.env` and patches `CLAUDE.md` with your studio name
+1. Run `bash scripts/setup.sh` — the wizard configures `.env` and patches `AGENT.md` with your studio name
 2. Open Claude Code (or your AI assistant) in this directory
 3. Run `/onboard-client <slug>` to create your first client workspace
 4. Run `/use-client <slug>` to lock the session to that client
@@ -50,7 +50,7 @@ See `SETUP.md` for a concise getting-started reference.
 ## First Week Checklist
 
 - [ ] Run `bash scripts/setup.sh` and complete configuration
-- [ ] Read `CLAUDE.md`, `AGENTS.md`, and this document
+- [ ] Read `AGENT.md`, `AGENTS.md`, and this document
 - [ ] Review patterns library
 - [ ] Onboard your first client with `/onboard-client`
 - [ ] Read through `clients/example-client/` to understand workspace structure

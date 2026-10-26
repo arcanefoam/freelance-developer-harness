@@ -65,7 +65,7 @@ fi
 
 # ── Step 1: Studio identity ───────────────────────────────────────────────────
 header "Step 1 — Studio identity"
-echo "  This name appears in CLAUDE.md and agent context."
+echo "  This name appears in AGENT.md and agent context."
 
 current_studio=$(load_env_var STUDIO_NAME)
 STUDIO_NAME=$(prompt "Studio name" "${current_studio:-My Studio}")
@@ -90,11 +90,11 @@ SOURCE_ROOT_BASE=$(prompt "Source root" "${current_source_root:-$default_source_
 # ── Step 3: AI providers ──────────────────────────────────────────────────────
 header "Step 3 — AI providers (optional, leave blank to skip)"
 
-current_anthropic=$(load_env_var ANTHROPIC_API_KEY)
-ANTHROPIC_API_KEY=$(prompt "Anthropic API key (for Claude)" "${current_anthropic:-}")
-
-current_google=$(load_env_var GOOGLE_API_KEY)
-GOOGLE_API_KEY=$(prompt "Google API key (for Gemini)" "${current_google:-}")
+#current_anthropic=$(load_env_var ANTHROPIC_API_KEY)
+#ANTHROPIC_API_KEY=$(prompt "Anthropic API key (for Claude)" "${current_anthropic:-}")
+#
+#current_google=$(load_env_var GOOGLE_API_KEY)
+#GOOGLE_API_KEY=$(prompt "Google API key (for Gemini)" "${current_google:-}")
 
 current_venice=$(load_env_var VENICE_API_KEY)
 VENICE_API_KEY=$(prompt "Venice API key" "${current_venice:-}")
@@ -162,7 +162,8 @@ echo ""
 echo -e "${BOLD}${GREEN}Setup complete!${RESET}"
 echo ""
 echo "  Next steps:"
-echo "  1. Open Claude Code in this directory"
+echo "  1. Open your Agent App or Agent-Enabled IDE in this directory"
+echo "  2. Login to azure cli: az login from the docker container terminal"
 echo "  2. Run: /onboard-client <your-client-slug>"
 echo "     (creates clients/<slug>/ workspace from template)"
 echo "  3. Run: /use-client <slug>"

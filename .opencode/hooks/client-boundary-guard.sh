@@ -6,7 +6,7 @@
 #   exit 2 -> BLOCK   (only exit 2 blocks in Claude Code; any other non-zero
 #                      is surfaced as a non-blocking error)
 #
-# The active client is the session lock at .claude/sessions/<session_id>.client,
+# The active client is the session lock at .opencode/sessions/<session_id>.client,
 # written by /use-client. Contents are "<client>" or "<client>/<project>".
 #
 # Deliberately fails OPEN when there is no lock: a session that has not run

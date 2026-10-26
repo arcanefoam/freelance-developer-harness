@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # UserPromptSubmit hook: injects active client/project context into every prompt.
-# Reads .claude/sessions/<session_id> which contains either:
+# Reads .opencode/sessions/<session_id> which contains either:
 #   <client-slug>              → client-only lock
 #   <client-slug>/<project>   → client + project lock
 #

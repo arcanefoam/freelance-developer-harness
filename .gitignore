@@ -18,9 +18,9 @@ dist-ssr
 .playwright-mcp/
 
 # Per-session client locks (runtime state, not committed)
-.claude/sessions/
-.claude/active-client
-.claude/active-pm
+.opencode/sessions/
+.opencode/active-client
+.opencode/active-pm
 
 # Editor directories and files
 .vscode/*
