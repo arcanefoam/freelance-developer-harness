@@ -23,9 +23,9 @@ model to decide what deserves a $10/M one.
 
 | Agent | Excels at | Weak at | Cost in/out per M | Tier |
 |---|---|---|---|---|
-| claude-opus-5-5 | Best-in-class agentic coding, long refactors, multi-file work, 1M ctx | Priciest non-Fable tier; verbose on trivial edits | $4.00 / $20.00 | High |
-| claude-opus-5-5-fast | Same quality, lower latency for interactive loops | Same price ceiling as Opus 5 Fast tier | $8.00 / $40.00 | Very high |
-| claude-fable-5-1 | Long code refactors, front-end dev, always-on thinking, concise plans | Cost | $10.00 / $50.00 | Very high |
+| .opencode-opus-5-5 | Best-in-class agentic coding, long refactors, multi-file work, 1M ctx | Priciest non-Fable tier; verbose on trivial edits | $4.00 / $20.00 | High |
+| .opencode-opus-5-5-fast | Same quality, lower latency for interactive loops | Same price ceiling as Opus 5 Fast tier | $8.00 / $40.00 | Very high |
+| .opencode-fable-5-1 | Long code refactors, front-end dev, always-on thinking, concise plans | Cost | $10.00 / $50.00 | Very high |
 | kimi-k3 | **Navigating large repos**, tool use, debugging against tests/logs/runtime feedback | 1M ctx but heavy output tokens | $3.75 / $18.75 | High |
 | kimi-k2-7-code | Purpose-built code model, private tier | Older generation | $0.75 / $3.50 | Low-med |
 | openai-gpt-53-codex | Code generation, refactoring, debugging | Codex-tuned, weaker on prose | $1.75 / $14.00 | Med-high |
@@ -41,20 +41,20 @@ model to decide what deserves a $10/M one.
 
 Tools that carry coding work: HTML sandbox (live interactive previews, algorithm visualisers, runnable demos), Mermaid (architecture + sequence + ER diagrams), web scrape (pulling docs/APIs), calculator, document upload (reading specs and PDFs).
 
-Pick: glm-5-3-flash or minimax-m3-1-flash for volume; kimi-k3 for large-repo navigation; claude-opus-5-5 when the refactor is genuinely hard.
+Pick: glm-5-3-flash or minimax-m3-1-flash for volume; kimi-k3 for large-repo navigation; .opencode-opus-5-5 when the refactor is genuinely hard.
 
 ## Project Management
 
 |Agent	|Excels at	|Weak at	|Cost in/out per M	| Tier     |
 |---|---|---|---|----------|
 |muse-wonder	| The only true "run it to completion" agent — plans, delegates to sub-agents, parallel tool calls, self-recovers from errors	Most expensive text model here |	$5.00 / $25.00	| Very high |
-|claude-opus-5-5	| Best collaborator on long-running work; holds whole project context	|Cost	$4.00 / $20.00	| High |
+|.opencode-opus-5-5	| Best collaborator on long-running work; holds whole project context	|Cost	$4.00 / $20.00	| High |
 |gemini-4-argon	| Enterprise knowledge work, complex cross-functional workflows, 1M ctx	|Cost	$2.50 / $12.50	| High |
-|claude-sonnet-5-5	| Everyday scoping, polished status docs, slides, spreadsheets; writes clearly	|Not a deep reasoner	| $2.00 / $10.00	| Medium   |
+|.opencode-sonnet-5-5	| Everyday scoping, polished status docs, slides, spreadsheets; writes clearly	|Not a deep reasoner	| $2.00 / $10.00	| Medium   |
 |grok-4-7	| Function calling + structured output — good for ticket/JSON pipelines	|500K ctx	| $2.27 / $6.80	| Medium   |
 |hy4-preview	| Office and data analysis, long-horizon reasoning	|Preview status	| $1.04 / $3.13	| Medium   |
 |mercury-3	| Diffusion model, 1000+ tok/sec — status rollups, structured extraction	|1M ctx but shallow	| $0.10 / $0.35	| Very low |
-|claude-haiku-5-5	| High-volume classification, routing, extraction, subagent tasks	|Not for strategy	| $0.10 / $0.50	| Very low |
+|.opencode-haiku-5-5	| High-volume classification, routing, extraction, subagent tasks	|Not for strategy	| $0.10 / $0.50	| Very low |
 |gpt-6-luna	| Lightweight agentic workflows and chat	| Lightweight by design	| $0.10 / $0.50	| Very low |
 |gemini-3-5-flash-lite	| Everyday summarisation, cheap long-context reads	|Weak at deep planning	| $0.38 / $3.13	|Low|
 
@@ -69,8 +69,8 @@ the deliverable; muse-wonder only when you want it to actually execute a long pl
 
 |Agent	|Excels at	|Weak at	|Cost in/out per M	| Tier     |
 |---|---|---|---|----------|
-|claude-sonnet-5-5	|Best fit overall — polished client-facing docs, decks, spreadsheets, clearest writing	|—	|$2.00 / $10.00	|Medium   |
-|claude-fable-5-1	|Concise plans and summaries; finance and analysis tasks	|Overkill for routine comms	|$10.00 / $50.00	|Very high|
+|.opencode-sonnet-5-5	|Best fit overall — polished client-facing docs, decks, spreadsheets, clearest writing	|—	|$2.00 / $10.00	|Medium   |
+|.opencode-fable-5-1	|Concise plans and summaries; finance and analysis tasks	|Overkill for routine comms	|$10.00 / $50.00	|Very high|
 |gemini-4-argon	|Enterprise knowledge work + cybersecurity defence (good for technical clients)	|Cost	|$2.50 / $12.50	|High|
 |qwen-3-8-max	|Office-productivity workflows, multi-agent handoffs	|Thinking mode only	|$2.50 / $7.50	|Medium|
 |grok-4-7	|Fast meeting prep, objection handling, negotiation prep	|No vision edge	|$2.27 / $6.80	|Medium|

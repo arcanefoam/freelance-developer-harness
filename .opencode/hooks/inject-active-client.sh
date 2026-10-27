@@ -7,7 +7,7 @@
 # No lock = no active client. There is no legacy fallback path.
 
 HARNESS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-SESSIONS_DIR="$HARNESS_DIR/.claude/sessions"
+SESSIONS_DIR="$HARNESS_DIR/..opencode/sessions"
 
 # Get session ID from the JSON payload on stdin
 INPUT=$(cat)

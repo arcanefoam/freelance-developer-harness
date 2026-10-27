@@ -4,7 +4,7 @@ This is the community space for the **Freelance Developer Harness**, a project f
 
 ## What this project is
 
-The Freelance Developer Harness is a multi-agent operating system for [Claude Code](https://claude.com/claude-code) that lets a solo developer (or small team) operate like a full creative and technical agency.
+The Freelance Developer Harness is a multi-agent operating system for [.opencode Code](https://.opencode.com/.opencode-code) that lets a solo developer (or small team) operate like a full creative and technical agency.
 
 Work flows through a **Product Manager** who directs four councils:
 

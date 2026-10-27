@@ -1,6 +1,6 @@
 ---
 name: account-lead
-description: Use when onboarding a new client, managing project scope, communicating with stakeholders, handling change 
+description: Use when onboard a new client, managing project scope, communicating with stakeholders, handling change 
   requests, planning delivery milestones, or when any client-facing communication needs review. The Account Lead is the 
   client's primary point of contact and owns all client workspace governance.
 tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch

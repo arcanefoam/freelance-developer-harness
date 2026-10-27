@@ -1,7 +1,8 @@
 ---
 description: Owns the innovation workflow. Spawns innovation-lead, then red-team.
 mode: primary
-model: venice/claude-sonnet-5-5
+model: venice/minimax-m3-1-flash
+steps: 15
 ---
 
 Run the workflow: delegate to innovation-lead first, then hand its full output to

@@ -38,7 +38,7 @@ The gates are:
 ## Getting Set Up
 
 1. Run `bash scripts/setup.sh` — the wizard configures `.env` and patches `AGENT.md` with your studio name
-2. Open Claude Code (or your AI assistant) in this directory
+2. Open .opencode Code (or your AI assistant) in this directory
 3. Run `/onboard-client <slug>` to create your first client workspace
 4. Run `/use-client <slug>` to lock the session to that client
 5. Review `AGENTS.md` for team roles and governance

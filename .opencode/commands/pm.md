@@ -5,25 +5,25 @@ description: Invoke the Product Manager to marshal and orchestrate work across a
 ## Session-scoped PM lock
 
 The PM command is session-scoped.
-PM mode state is stored in `.claude/sessions/<SESSION_ID>.pm-mode` (contains "on" or "off").
+PM mode state is stored in `..opencode/sessions/<SESSION_ID>.pm-mode` (contains "on" or "off").
 
 **Special subcommands — handle these directly without spawning an agent:**
 
 ### If $ARGUMENTS is "on":
 - The SESSION_ID is injected into the system prompt as `SESSION_ID = <value>`. Read it from there; if not present, use "default".
-- Run `mkdir -p .claude/sessions && echo "on" > ".claude/sessions/<SESSION_ID>.pm-mode"` via Bash.
+- Run `mkdir -p ..opencode/sessions && echo "on" > "..opencode/sessions/<SESSION_ID>.pm-mode"` via Bash.
 - Confirm: "PM mode enabled. Every prompt will now be routed through the PM."
 - Stop here.
 
 ### If $ARGUMENTS is "off":
 - The SESSION_ID is injected into the system prompt as `SESSION_ID = <value>`. Read it from there; if not present, use "default".
-- Run `rm -f ".claude/sessions/<SESSION_ID>.pm-mode" && echo "off"` via Bash.
+- Run `rm -f "..opencode/sessions/<SESSION_ID>.pm-mode" && echo "off"` via Bash.
 - Confirm: "PM mode disabled."
 - Stop here.
 
 ### If $ARGUMENTS is "status" or "list":
 - The SESSION_ID is injected into the system prompt as `SESSION_ID = <value>`. Read it from there; if not present, use "default".
-- Run `ls .claude/sessions/*.pm-mode 2>/dev/null || echo "(none)"` via Bash to find all sessions with PM mode enabled.
+- Run `ls ..opencode/sessions/*.pm-mode 2>/dev/null || echo "(none)"` via Bash to find all sessions with PM mode enabled.
 - For each `.pm-mode` file found, print the session ID (filename without `.pm-mode`) and whether mode is on/off.
 - Print current session PM mode status: ON or OFF.
 - Stop here.
@@ -44,7 +44,7 @@ Execute the full automated workflow:
 
 1. **Assess the request** — Is this intake (new project), a sprint (ongoing work), or a targeted delegation (specific epic/feature)?
 
-2. **Load context** — Read the active client lock at `.claude/sessions/<SESSION_ID>.client` if present (contents: `<client>` or `<client>/<project>`). Use it to locate the correct workspace under `clients/<client>/projects/<project>/`. If no lock is set, ask once and run `/use-client` before proceeding — without a lock the client boundary guard is inactive.
+2. **Load context** — Read the active client lock at `..opencode/sessions/<SESSION_ID>.client` if present (contents: `<client>` or `<client>/<project>`). Use it to locate the correct workspace under `clients/<client>/projects/<project>/`. If no lock is set, ask once and run `/use-client` before proceeding — without a lock the client boundary guard is inactive.
 
 3. **Produce a delegation plan** — Break the work into epics, assign each to the correct council and agent, map dependencies, and identify the critical path.
 

@@ -9,18 +9,41 @@
       },
       "models": {
         "muse-wonder": { "name": "Muse Wonder" },
-        "abliteration-abliterated-model-large-v2": { "name": "Abliterated Large V2" },
-        "claude-sonnet-5-5": { "name": "Claude Sonnet 5.5" }
+        "z-ai-glm-5-3-flash":       { "name": "GLM 5.3 Flash" },
+        "claude-haiku-5-5":         { "name": "Claude Haiku 5.5" },
+        "deepseek-v4-flash-0731":   { "name": "DeepSeek V4 Flash" },
+        "qwen-3-8-flash":           { "name": "Qwen 3.8 Flash" },
+        "deepseek-v4-1-flash-1017": { "name": "DeepSeek V4.1 Flash" },
+        "claude-sonnet-5-5":        { "name": "Claude Sonnet 5.5" },
+        "claude-opus-5-5":          { "name": "Claude Opus 5.5" },
+        "openai-gpt-61-terra":      { "name": "GPT-6.1 Terra" }
       }
     }
   },
-  "agents": {
-    "orchestrator": {
-      "permissions": [
-        { "action": "subagent", "resource": "*", "effect": "deny" },
-        { "action": "subagent", "resource": "innovation-lead", "effect": "allow" },
-        { "action": "subagent", "resource": "red-team", "effect": "allow" }
-      ]
+  "mcp": {
+    "azureDevOps": {
+      "type": "remote",
+      "url": "https://mcp.dev.azure.com/",
+      "enabled": false
     }
-  }
+  },
+  "permissions": [
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "git *", "effect": "allow" },
+    { "action": "shell", "resource": "npm *", "effect": "allow" },
+    { "action": "shell", "resource": "npx *", "effect": "allow" },
+    { "action": "shell", "resource": "mkdir *", "effect": "allow" },
+    { "action": "shell", "resource": "rm -rf *", "effect": "deny" },
+
+    { "action": "edit", "resource": "*", "effect": "ask" },
+    { "action": "edit", "resource": "clients/*", "effect": "allow" },
+    { "action": "edit", "resource": "patterns/*", "effect": "allow" },
+    { "action": "edit", "resource": "*.env", "effect": "deny" },
+
+    { "action": "read", "resource": "*.env", "effect": "allow" },
+    { "action": "read", "resource": "*.env.*", "effect": "allow" },
+
+    { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "webfetch", "resource": "*", "effect": "ask" }
+  ]
 }

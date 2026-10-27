@@ -14,14 +14,14 @@ $ARGUMENTS may be:
 ## Steps
 
 ### If $ARGUMENTS is "list":
-- Run `ls .claude/sessions/*.client 2>/dev/null || echo "(none)"` via Bash to find all client lock files.
+- Run `ls ..opencode/sessions/*.client 2>/dev/null || echo "(none)"` via Bash to find all client lock files.
 - For each file found, print the session ID (filename without `.client`) and its contents.
 - Confirm: "Active client locks listed above."
 - Stop here.
 
 ### If $ARGUMENTS is "clear" or "reset":
 - The SESSION_ID is injected into the system prompt as `SESSION_ID = <value>`. Read it from there; if not present, use "default".
-- Run `rm -f ".claude/sessions/<SESSION_ID>.client" && echo "cleared <SESSION_ID>.client"` via Bash.
+- Run `rm -f "..opencode/sessions/<SESSION_ID>.client" && echo "cleared <SESSION_ID>.client"` via Bash.
 - Confirm: "Client lock cleared for this session."
 - Stop here.
 
@@ -51,11 +51,11 @@ $ARGUMENTS may be:
 
 3. **Write the session lock file:**
    - The SESSION_ID is injected into the system prompt as `SESSION_ID = <value>`. Read it from there; if not present, use "default".
-   - Run `mkdir -p .claude/sessions` via Bash to ensure the directory exists.
+   - Run `mkdir -p ..opencode/sessions` via Bash to ensure the directory exists.
    - If no project: write a single line — just the client slug.
    - If project provided: write a single line in the format `<CLIENT_SLUG>/<PROJECT_SLUG>`.
-   - Write to `.claude/sessions/<SESSION_ID>.client` using the Write tool (where SESSION_ID is the value from the Bash step above).
-   - This lock is isolated to this Claude session — other sessions are unaffected.
+   - Write to `..opencode/sessions/<SESSION_ID>.client` using the Write tool (where SESSION_ID is the value from the Bash step above).
+   - This lock is isolated to this .opencode session — other sessions are unaffected.
 
 4. **Confirm to the user:**
    - Active client: **<CLIENT_SLUG>**

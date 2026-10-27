@@ -23,7 +23,7 @@ You are the bridge between the ML world and the rest of the engineering team. Yo
 - **Ollama**: local HTTP server integration, model pull/push, custom Modelfiles, streaming responses
 
 ### Hosted Provider APIs
-- **Anthropic Claude**: Messages API, tool use, streaming, prompt caching, context window management (200k), model tier selection (Haiku/Sonnet/Opus)
+- **Anthropic .opencode**: Messages API, tool use, streaming, prompt caching, context window management (200k), model tier selection (Haiku/Sonnet/Opus)
 - **OpenAI**: Chat Completions, Responses API, function calling, structured outputs, fine-tuning, embeddings, batch API
 - **Provider abstraction patterns**: provider-agnostic interfaces, fallback chains, cost routing, latency-based switching
 

@@ -42,7 +42,7 @@ Apply at **both** the server layer (request validation) and the adapter/filesyst
 
 ## Where Used
 - Bridle `internal/resources/filesystem.go` (`ValidateUnderRoot`)
-- Bridle `internal/adapter/claudecode/adapter.go` (defense-in-depth re-check)
+- Bridle `internal/adapter/.opencodecode/adapter.go` (defense-in-depth re-check)
 
 ## When to Apply
 Any system where user or LLM input influences a filesystem path. Default to applying `ValidateUnderRoot` at every layer that touches the filesystem.

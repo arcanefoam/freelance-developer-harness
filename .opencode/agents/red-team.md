@@ -2,7 +2,7 @@
 description: Adversarial critic. Use AFTER innovation-lead returns, to kill weak
   ideas and attack the framing itself. Assume the brief is wrong until proven otherwise.
 mode: subagent
-model: venice/abliteration-abliterated-model-large-v2
+model: venice/olafangensan-glm-4.7-flash-heretic
 steps: 10
 request:
   body:

@@ -36,7 +36,7 @@ The setup wizard will ask for:
 - API keys (Anthropic, Google — optional)
 - GitHub token (optional)
 
-Then open Claude Code in this directory and follow the prompts at the end of setup.
+Then open .opencode Code in this directory and follow the prompts at the end of setup.
 
 ## What setup does
 
@@ -47,7 +47,7 @@ Then open Claude Code in this directory and follow the prompts at the end of set
 ## After setup
 
 ```bash
-# In Claude Code:
+# In .opencode Code:
 /onboard-client acme-corp        # creates clients/acme-corp/ workspace
 /use-client acme-corp            # locks this session to acme-corp
 /pm on                           # enables automatic PM routing
@@ -79,7 +79,7 @@ The harness holds intent (specs, briefs, deliverables). Source code lives in sep
 ## Full documentation
 
 - `README.md` — architecture, diagrams, how pieces connect
-- `AGENT.md` — complete operating model (loaded automatically by Claude Code)
+- `AGENT.md` — complete operating model (loaded automatically by .opencode Code)
 - `AGENTS.md` — team roster, authorities, governance matrix
 - `docs/onboarding.md` — team guide
 - `docs/workflows/` — detailed per-stage workflow docs

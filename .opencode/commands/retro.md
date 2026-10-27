@@ -19,7 +19,7 @@ clients/{{CLIENT_SLUG}}/projects/{{PROJECT_SLUG}}/sprints/CURRENT
 ## Step 0: Resolve the active sprint
 
 1. Read `CLIENT_SLUG` and `PROJECT_SLUG` from the active client lock
-   (`.claude/sessions/<SESSION_ID>.client`). If none, stop and ask the user
+   (`..opencode/sessions/<SESSION_ID>.client`). If none, stop and ask the user
    to run `/use-client <slug> <project>` first.
 
 2. Set

@@ -131,7 +131,7 @@ flowchart TB
 
 ```
 freelance-developer-harness/
-├── .claude/
+├── ..opencode/
 │   ├── agents/            # 25 role definitions — each agent is a markdown persona
 │   ├── commands/          # Slash commands (/pm, /intake, /sprint-plan, /retro, /mode, …)
 │   ├── hooks/             # Session-context injection + client boundary guard
@@ -154,7 +154,7 @@ freelance-developer-harness/
 ├── docs/                  # SOPs, workflows, onboarding, refit records
 ├── scripts/
 │   ├── setup.sh                 # Interactive first-time configuration
-├── AGENT.md              # Routing table, gates, and traps — loaded automatically by Claude Code
+├── AGENT.md              # Routing table, gates, and traps — loaded automatically by .opencode Code
 ├── AGENTS.md              # Team roster, authorities, gates, governance matrix
 └── README.md
 ```
@@ -181,7 +181,7 @@ bash scripts/setup.sh
 # 4. Open in AI App or IDE, then onboard your first client
 /onboard-client acme-corp
 
-# 5. Lock the session and start working
+# 5. Lock the session and start working: client project team
 /use-client acme-corp storefront dev
 /pm build the checkout flow
 ```

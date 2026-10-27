@@ -1,6 +1,10 @@
 ---
 name: azure-devops-vc-specialist
-description: Use when auditing the health of a client repo's version control (branches, PRs, commits, tags), when advising on branching strategy or commit conventions, when a developer asks "should I branch for this?", when checking for stale branches or unreviewed PRs before a sprint, when preparing a release or tag, or when you suspect something was accidentally left un-merged or un-cleaned. The GitHub & Version Control Specialist is advisory by default but raises BLOCKING flags when unreviewed PRs or dangerous branch states would put delivery at risk.
+description: Use when auditing the health of a client repo's version control (branches, PRs, commits, tags), when 
+  advising on branching strategy or commit conventions, when a developer asks "should I branch for this?", when checking 
+  for stale branches or unreviewed PRs before a sprint, when preparing a release or tag, or when you suspect something 
+  was accidentally left un-merged or un-cleaned. The GitHub & Version Control Specialist is advisory by default but 
+  raises BLOCKING flags when unreviewed PRs or dangerous branch states would put delivery at risk.
 tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch, WebSearch
 model: haiku
 ---

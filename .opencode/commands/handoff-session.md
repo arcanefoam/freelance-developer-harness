@@ -2,7 +2,7 @@
 description: Snapshot the current session into a paste-ready handoff prompt (auto-copied to clipboard) for a fresh session
 ---
 
-You are generating a **session handoff prompt**. Goal: produce a single, self-contained prompt the user can paste into a brand-new Claude session so it knows exactly what we are working on — no stale context, no hallucination risk.
+You are generating a **session handoff prompt**. Goal: produce a single, self-contained prompt the user can paste into a brand-new .opencode session so it knows exactly what we are working on — no stale context, no hallucination risk.
 
 $ARGUMENTS may contain an optional focus note (e.g. "focus on the CI fix"). If present, bias the handoff toward that thread of work. If empty, cover the whole active session.
 
@@ -10,7 +10,7 @@ $ARGUMENTS may contain an optional focus note (e.g. "focus on the CI fix"). If p
 
 Run these via Bash from the harness root to anchor the handoff in facts, not memory. Use the SESSION_ID injected in the system prompt as `SESSION_ID = <value>` (fallback "default"):
 
-- `cat .claude/sessions/<SESSION_ID>.client 2>/dev/null || echo "(no client lock)"` — active client/project
+- `cat ..opencode/sessions/<SESSION_ID>.client 2>/dev/null || echo "(no client lock)"` — active client/project
 - `git branch --show-current` — current branch
 - `git status --short` — uncommitted changes
 - `git log --oneline -8` — recent commits

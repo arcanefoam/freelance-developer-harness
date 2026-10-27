@@ -91,7 +91,7 @@ SOURCE_ROOT_BASE=$(prompt "Source root" "${current_source_root:-$default_source_
 header "Step 3 — AI providers (optional, leave blank to skip)"
 
 #current_anthropic=$(load_env_var ANTHROPIC_API_KEY)
-#ANTHROPIC_API_KEY=$(prompt "Anthropic API key (for Claude)" "${current_anthropic:-}")
+#ANTHROPIC_API_KEY=$(prompt "Anthropic API key (for .opencode)" "${current_anthropic:-}")
 #
 #current_google=$(load_env_var GOOGLE_API_KEY)
 #GOOGLE_API_KEY=$(prompt "Google API key (for Gemini)" "${current_google:-}")

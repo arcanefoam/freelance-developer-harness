@@ -3,7 +3,7 @@
 #
 # Contract:
 #   exit 0 -> allow   (also the no-lock case; see below)
-#   exit 2 -> BLOCK   (only exit 2 blocks in Claude Code; any other non-zero
+#   exit 2 -> BLOCK   (only exit 2 blocks in .opencode Code; any other non-zero
 #                      is surfaced as a non-blocking error)
 #
 # The active client is the session lock at .opencode/sessions/<session_id>.client,
@@ -33,7 +33,7 @@ FILE_PATH="$(printf '%s' "$INPUT" | jq -r '.tool_input.file_path // .tool_input.
 [ -z "$FILE_PATH" ] && exit 0
 [ -z "$SESSION_ID" ] && exit 0
 
-LOCK_FILE="$HARNESS_DIR/.claude/sessions/$SESSION_ID.client"
+LOCK_FILE="$HARNESS_DIR/..opencode/sessions/$SESSION_ID.client"
 [ -f "$LOCK_FILE" ] || exit 0
 
 LOCK="$(tr -d '[:space:]' < "$LOCK_FILE" 2>/dev/null)"

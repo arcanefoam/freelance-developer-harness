@@ -24,7 +24,7 @@ to the client root, or anywhere shared across projects.
 ## Step 0: Resolve the sprint directory and next number
 
 1. Read `CLIENT_SLUG` and `PROJECT_SLUG` from the active client lock
-   (`.claude/sessions/<SESSION_ID>.client`). If none, stop and tell the user
+   (`..opencode/sessions/<SESSION_ID>.client`). If none, stop and tell the user
    to run `/use-client <slug> <project>` first.
 
 2. Set `SPRINTS_DIR=clients/<CLIENT_SLUG>/projects/<PROJECT_SLUG>/sprints`.
