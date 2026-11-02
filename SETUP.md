@@ -64,8 +64,8 @@ clients/
   your-client/            ← created by /onboard-client
     brief.md
     requirements.md
-    projects/
-      your-project/
+    work-products/
+      work-product/
         specs/            ← ADRs, PM summaries
         design/           ← design assets
         qa/               ← test reports

@@ -4,7 +4,8 @@ Welcome to the studio. This guide gets you up to speed.
 
 ## The Studio Philosophy
 
-We exist to do excellent work for clients who deserve it. We do not cut corners. We do not ship things we're not proud of. We treat every client project as if our reputation depends on it — because it does.
+We exist to do excellent work for clients who deserve it. We do not cut corners. We do not ship things we're not proud 
+of. We treat every client project as if our reputation depends on it — because it does.
 
 ## How We Work
 
@@ -12,14 +13,14 @@ We exist to do excellent work for clients who deserve it. We do not cut corners.
 
 **Creative Council** sets the vision and experience direction.
 **Technical Council** builds with excellence and rigor.
-**Hardware Council** takes physical products from concept through EVT/DVT/PVT to production.
 **Delivery Council** connects everything and ensures clients are delighted.
 
 No council is more important than another. The best work happens at the intersections.
 
 ### Gates and Governance
 
-We have non-negotiable gates. They exist because we learned (or others learned) what happens when you skip them. When you hit a gate, don't work around it — work through it.
+We have non-negotiable gates. They exist because we learned (or others learned) what happens when you skip them. When 
+you hit a gate, don't work around it — work through it.
 
 The gates are:
 1. Client brief signed before work starts

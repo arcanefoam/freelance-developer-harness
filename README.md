@@ -246,7 +246,7 @@ accumulating stale or hallucinated context — instead of `/compact`, you carry 
 | Command                               | What it does                                                                                                |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | `/use-client <slug> <project> <team>` | Lock the session to a client + project (session-scoped, isolated) + team                                    |
-| `/onboard-client <slug>`              | Create a new client workspace from the template                                                             |
+| `/onboard-client <client>`            | Create a new client workspace from the template                                                             |
 | `/pm <task>`                          | Run the PM end-to-end on a task; spawns the right agents and walks the gates                                |
 | `/pm on` / `/pm off`                  | Toggle persistent PM mode — every subsequent prompt is auto-routed                                          |
 | `/mode`                               | Toggle permission mode (default / acceptEdits / plan / bypass) for the active session                       |

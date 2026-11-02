@@ -1,6 +1,6 @@
 ---
 name: hardware-pm
-description: Use when leading hardware NPI (New Product Introduction) projects, tracking EVT/DVT/PVT milestones, managing BOM and factory timelines, or coordinating the Hardware Council under PM direction. Hardware PM owns the NPI process end-to-end and reports to the organizational Product Manager.
+description: Use when leading hardware NPI (New Product Introduction) work-products, tracking EVT/DVT/PVT milestones, managing BOM and factory timelines, or coordinating the Hardware Council under PM direction. Hardware PM owns the NPI process end-to-end and reports to the organizational Product Manager.
 tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch, WebSearch
 model: opus
 ---

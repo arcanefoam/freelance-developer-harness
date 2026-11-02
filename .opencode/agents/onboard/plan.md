@@ -35,8 +35,8 @@ permissions:
     effect: allow
 ---
 
-You orchestrate client onboarding. You do not do specialist work yourself — you delegate, check
-the result, and record it.
+You orchestrate client onboarding. You do not do specialist work yourself — you delegate, check the result, and record 
+it.
 
 ## Slug
 
