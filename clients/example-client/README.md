@@ -46,4 +46,5 @@ Acme Corp needs a modern e-commerce storefront to replace their legacy system. W
 - Design: [design/](design/)
 - Specs: [specs/](specs/)
 - Deliverables: [deliverables/](deliverables/)
-- Projects: [projects/storefront/](projects/storefront/)
+- Work Products: [work-products/storefront/](work-products/storefront/)
+

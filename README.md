@@ -30,8 +30,30 @@ and you get a full agency team that ships predictable, gated, documented work.
 
 ## How It Works
 
-The Product Manager runs the pipeline. Every client need is broken into epics, routed to the right council, and held at 
-gates until each council signs off.
+The harness organizes studio operations around three levels: **Clients, Work Products, and Work**.
+
+* **Clients** represent the overall business relationship and engagement. Each client workspace maintains the business 
+    context, objectives, shared resources, and portfolio of work products.
+* **Work Products** represent independently managed deliverables within a client engagement, such as a website, mobile 
+    application, branding package, or business system. Each has its own scope, specifications, design, backlog, and  
+    delivery lifecycle.
+* **Work** represents the actual execution required to deliver each work product. The Product Manager breaks 
+    requirements into epics and tasks, routes them to the appropriate specialist councils, and coordinates execution  
+    through sprints and quality gates.
+
+The Product Manager operates at both client and work-product levels: maintaining overall priorities and dependencies 
+across the client engagement while directing the execution of individual work products.
+
+Work products can progress independently while sharing client resources, standards, and business context.
+
+**The hierarchy is simple:**
+
+`Client → Work Product → Work`
+
+The client defines the business context, the work product defines what is being delivered, and the work defines how it 
+gets done. The harness enforces workspace isolation, maintains execution history, and applies consistent quality gates throughout 
+the delivery process. The Product Manager runs the pipeline. Every work product is broken into epics, routed to the 
+right council, and held at gates until each council signs off.
 
 ```mermaid
 flowchart LR
@@ -142,8 +164,8 @@ freelance-developer-harness/
 │   └── <client-slug>/
 │       ├── brief.md
 │       ├── README.md
-│       └── projects/
-│           └── <project-slug>/
+│       └── work-products/
+│           └── <wp-slug>/
 │               ├── specs/         # ADRs, PM summaries, architecture docs
 │               ├── sprints/       # sprint-NNN.md + CURRENT symlink (per-project)
 │               ├── design/        # Design briefs and assets
@@ -153,7 +175,8 @@ freelance-developer-harness/
 ├── templates/             # adr.md, client-brief.md, design-brief.md, project-spec.md, sprint-plan.md
 ├── docs/                  # SOPs, workflows, onboarding, refit records
 ├── scripts/
-│   ├── setup.sh                 # Interactive first-time configuration
+│   ├── setup.ps1          # Interactive first-time configuration
+│   └── setup.sh
 ├── AGENT.md              # Routing table, gates, and traps — loaded automatically by .opencode Code
 ├── AGENTS.md              # Team roster, authorities, gates, governance matrix
 └── README.md
@@ -168,7 +191,7 @@ holds intent — briefs, specs, ADRs, deliverables. The project repo holds imple
 
 ```bash
 # 1. Clone
-git clone https://github.com/10Legs/freelance-developer-harness.git
+git clone https://github.com/arcanefoam/freelance-developer-harness
 cd freelance-developer-harness
 
 # 2. Configure
