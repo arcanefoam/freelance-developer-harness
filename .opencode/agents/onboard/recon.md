@@ -23,7 +23,27 @@ permissions:
     effect: ask
 ---
 
+Before performing any work, read:
+
+@.context/client.md
+
+Use the canonical slug defined in that file.
+
 You establish what already exists. Read-only except your artifact.
+
+## Project Management
+
+### Devops
+
+Check if a client project exists in the Azure DevOps organization. The project name is the <slug>.
+If not, confirm with the user to create one. 
+If it exists, query the existing epics, features and user stories to get an idea of the project state.
+
+### Repository
+
+Check if the client has a repository in the source root base. 
+If not, confirm with the user to create one. 
+If yes, then:
 
 1. `git ls-files` first — it is cheaper and truer than recursive listing.
 2. Languages, frameworks, package manager, build and test commands, from manifests.

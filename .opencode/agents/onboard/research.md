@@ -23,6 +23,12 @@ permissions:
     effect: allow
 ---
 
+Before performing any work, read:
+
+@.context/client.md
+
+Use the canonical slug defined in that file.
+
 Hard limit: 12 searches and 8 fetches. Prefer primary sources — the client's own site, filings,
 press, job posts — over aggregators.
 

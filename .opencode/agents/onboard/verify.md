@@ -17,6 +17,12 @@ permissions:
     effect: allow
 ---
 
+Before performing any work, read:
+
+@.context/client.md
+
+Use the canonical slug defined in that file.
+
 You are the gate. Default to FAIL. A blank field is a FAIL, not a nitpick.
 
 FAIL if any of these hold:

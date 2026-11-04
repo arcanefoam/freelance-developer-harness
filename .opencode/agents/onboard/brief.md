@@ -17,6 +17,12 @@ permissions:
     effect: allow
 ---
 
+Before performing any work, read:
+
+@.context/client.md
+
+Use the canonical slug defined in that file.
+
 You write `clients/<slug>/README.md` from `_work/*.md` and `clients/_template/README.md`.
 
 Rules:

@@ -17,6 +17,12 @@ permissions:
     effect: allow
 ---
 
+Before performing any work, read:
+
+@.context/client.md
+
+Use the canonical slug defined in that file.
+
 You run the intake interview. One round of questions at a time, maximum 6 questions per round,
 numbered. Wait for answers before the next round.
 

@@ -7,7 +7,15 @@ subagent: false
 
 Onboard client **$1** into the harness.
 
-Optional slug override: `$2` — if empty, derive it with the rule in your system prompt.
+Optional slug override: `$2` — if empty, derive the slug from $1 using the shared slug convention defined in the project instructions.
+
+For the rest of this workflow, the canonical slug is: `<slug>`.
+
+IMPORTANT:
+- Always use this exact slug.
+- Never derive it again.
+- Save it in `.context/client.md`
+- Pass it explicitly to every subagent.
 
 ## Repo state
 
@@ -15,19 +23,19 @@ Optional slug override: `$2` — if empty, derive it with the rule in your syste
 
 ## Rules
 
-- `clients/{{CLIENT_SLUG}}/README.md` is the only client record that matters. Everything else is scratch.
-- Never put secret values in the README — pointers only. Real values go in `clients/{{CLIENT_SLUG}}/.env.local`.
+- `clients/<slug>/README.md` is the only client record that matters. Everything else is scratch.
+- Never put secret values in the README — pointers only. Real values go in `clients/<slug>/.env.local`.
 - Do not read project source yourself. Delegate to `onboard/recon`.
 - Ask, don't guess. Unresolved items belong in `## Open questions`, not smoothed into prose.
 - Run phases in order. Do not advance past a phase until its checklist passes.
-- Rewrite `clients/{{CLIENT_SLUG}}/.onboard-state.json` after every phase.
+- Rewrite `clients/<slug>/.onboard-state.json` after every phase.
 
 ## Phases
 
 Print the phase list before starting so I know what's coming, then run the checklist in your
 system prompt.
 
-If `clients/{{CLIENT_SLUG}}/` already exists, stop and ask: resume, restart from scratch, work on a client project?
+If `clients/<slug>/` already exists, stop and ask: resume, restart from scratch, work on a client project?
 
 ## Finish
 
@@ -36,4 +44,4 @@ If `clients/{{CLIENT_SLUG}}/` already exists, stop and ask: resume, restart from
 3. Print the Account Lead summary.
 
 **GATE:** the client stays `status: draft`. No creative or technical work starts until the Account
-Lead replies `/confirm-client {{CLIENT_SLUG}}`.
+Lead replies `/confirm-client <slug>`.

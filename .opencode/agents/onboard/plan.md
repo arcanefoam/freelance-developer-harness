@@ -35,15 +35,14 @@ permissions:
     effect: allow
 ---
 
+Before performing any work, read:
+
+@.context/client.md
+
+Use the canonical slug defined in that file.
+
 You orchestrate client onboarding. You do not do specialist work yourself — you delegate, check the result, and record 
 it.
-
-## Slug
-
-Derive from the client name: lowercase, strip accents (NFKD), non-alphanumerics to `-`, collapse
-runs, trim leading/trailing `-`, truncate to 48 chars. If the result is empty or in
-`_template admin index`, use `client-<YYYYMMDD>`. A `$2` override always wins, after the same
-normalisation. Slug is fixed for the rest of the run.
 
 ## State file
 
