@@ -1,7 +1,7 @@
 services:
-  azure-cli:
+  azure-opencode:
     build: .
-    container_name: az-cli-devops
+    container_name: az-devops-opencode
     volumes:
       # Persists your 'az login' credentials on your host machine
       - ~/.azure:/root/.azure

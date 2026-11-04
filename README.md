@@ -194,14 +194,29 @@ holds intent — briefs, specs, ADRs, deliverables. The project repo holds imple
 git clone https://github.com/arcanefoam/freelance-developer-harness
 cd freelance-developer-harness
 
-# 2. Configure
+# 2. Configure Most values will also be filled by the setup script
 cp .env.template .env
 $EDITOR .env             # set STUDIO_NAME, SOURCE_ROOT_BASE, GITHUB_USERNAME, etc.
 
 # 3. Run setup — patches AGENT.md with your studio identity
 bash scripts/setup.sh
 
-# 4. Open in AI App or IDE, then onboard your first client
+# OR PowerSehell /.setup.ps1
+
+# Run OpenCode from a docker container
+docker compopse up -d
+```
+
+Once the container started, access the bash from another terminal:
+
+```bash
+docker compose exec azure-opencode bash
+
+# Start opencode
+
+opencode
+
+# Open in AI App or IDE, then onboard your first client
 /onboard-client acme-corp
 
 # 5. Lock the session and start working: client project team

@@ -22,9 +22,8 @@
   },
   "mcp": {
     "azureDevOps": {
-      "type": "remote",
-      "url": "https://mcp.dev.azure.com/",
-      "enabled": false
+      "type": "local",
+      "command": ["npx", "-y", "@azure-devops/mcp", "kinori-tech", "-d", "work-items"]
     }
   },
   "permissions": [
