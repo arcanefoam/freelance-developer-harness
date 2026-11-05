@@ -189,6 +189,8 @@ holds intent — briefs, specs, ADRs, deliverables. The project repo holds imple
 
 ## Getting Started
 
+You need to create a Personal Access Token in your Azure user Settings -> Security
+
 ```bash
 # 1. Clone
 git clone https://github.com/arcanefoam/freelance-developer-harness
@@ -203,17 +205,7 @@ bash scripts/setup.sh
 
 # OR PowerSehell /.setup.ps1
 
-# Run OpenCode from a docker container
-docker compopse up -d
-```
-
-Once the container started, access the bash from another terminal:
-
-```bash
-docker compose exec azure-opencode bash
-
 # Start opencode
-
 opencode
 
 # Open in AI App or IDE, then onboard your first client
