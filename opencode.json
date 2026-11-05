@@ -20,12 +20,9 @@
       }
     }
   },
-  "mcp": {
-    "azureDevOps": {
-      "type": "local",
-      "command": ["npx", "-y", "@azure-devops/mcp", "kinori-tech", "-d", "work-items"]
-    }
-  },
+	"plugins": [
+    "./.opencode/plugins/azure-devops/work-items" 
+  ],
   "permissions": [
     { "action": "shell", "resource": "*", "effect": "ask" },
     { "action": "shell", "resource": "git *", "effect": "allow" },
