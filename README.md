@@ -182,14 +182,15 @@ freelance-developer-harness/
 └── README.md
 ```
 
-Source code lives **outside** the harness, in the project repo `$SOURCE_ROOT_BASE/<project-slug>/` (configured in `.env`). The harness 
+Source code lives **outside** the harness, in the project repo `$SOURCE_ROOT_BASE/<client-slug>/` (configured in `.env`). The harness 
 holds intent — briefs, specs, ADRs, deliverables. The project repo holds implementation.
 
 ---
 
 ## Getting Started
 
-You need to create a Personal Access Token in your Azure user Settings -> Security
+You need to create a Personal Access Token in your Azure user Settings -> Security.
+You need to install the OpenCode (v2) [cli or desktop app](https://opencode.ai/download).
 
 ```bash
 # 1. Clone
@@ -209,9 +210,9 @@ bash scripts/setup.sh
 opencode
 
 # Open in AI App or IDE, then onboard your first client
-/onboard-client acme-corp
+/onboard/complete <client name>
 
-# 5. Lock the session and start working: client project team
+# Lock the session and start working: client project team
 /use-client acme-corp storefront dev
 /pm build the checkout flow
 ```
@@ -253,7 +254,8 @@ accumulating stale or hallucinated context — instead of `/compact`, you carry 
 | Command                               | What it does                                                                                                |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | `/use-client <slug> <project> <team>` | Lock the session to a client + project (session-scoped, isolated) + team                                    |
-| `/onboard-client <client>`            | Create a new client workspace from the template                                                             |
+| `/onboard/client <client>`            | Create a new client workspace from the template
+| `/onboard/confirm <client>`           | Account Lead confirms an onboarding brief and releases the work gate
 | `/pm <task>`                          | Run the PM end-to-end on a task; spawns the right agents and walks the gates                                |
 | `/pm on` / `/pm off`                  | Toggle persistent PM mode — every subsequent prompt is auto-routed                                          |
 | `/mode`                               | Toggle permission mode (default / acceptEdits / plan / bypass) for the active session                       |
