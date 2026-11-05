@@ -46,6 +46,22 @@ prompt() {
   echo "${value:-$default}"
 }
 
+# ── Prompt helper: hidden input (no echo), shows whether a default exists ────
+prompt_secret() {
+  local label="$1"
+  local default="$2"
+  local value
+  if [[ -n "$default" ]]; then
+    ask "${label} [saved, Enter to keep]:"
+  else
+    ask "${label}:"
+  fi
+  read -rs value
+  # read -s does not emit a newline; send it to the terminal, not to stdout
+  echo "" >&2
+  echo "${value:-$default}"
+}
+
 # ── Start ─────────────────────────────────────────────────────────────────────
 clear
 echo -e "${BOLD}"
@@ -99,20 +115,15 @@ header "Step 3 — AI providers (optional, leave blank to skip)"
 current_venice=$(load_env_var VENICE_API_KEY)
 VENICE_API_KEY=$(prompt "Venice API key" "${current_venice:-}")
 
-# ── Step 4: Version control ───────────────────────────────────────────────────
-#header "Step 4 — Version control (optional)"
-#
-#current_gh=$(load_env_var GITHUB_TOKEN)
-#GITHUB_TOKEN=$(prompt "GitHub personal access token" "${current_gh:-}")
-#
-#current_org=$(load_env_var ORG_GITHUB_ORG)
-#GITHUB_ORG=$(prompt "GitHub org or username" "${current_org:-}")
-
 # ── Step 4: Project management ───────────────────────────────────────────────────
 header "Step 4 — Project management (optional)"
+echo "  Input for the PAT is hidden, like a password."
 
 current_az_org=$(load_env_var AZURE_ORG)
 AZURE_ORG=$(prompt "Azure organization (e.g. https://dev.azure.com/myorg)" "${current_az_org:-}")
+
+current_az_pat=$(load_env_var AZURE_ORG_PAT)
+AZURE_ORG_PAT=$(prompt_secret "Azure personal access token (hidden)" "${current_az_pat:-}")
 
 
 # ── Write .env ────────────────────────────────────────────────────────────────
@@ -125,11 +136,14 @@ set_env_var() {
   local key="$1"
   local value="$2"
   if [[ -n "$value" ]]; then
+    # Escape sed replacement metacharacters (PATs can contain & | \ /)
+    local escaped
+    escaped=$(printf '%s' "$value" | sed -e 's/[&|\\]/\\&/g')
     # Replace the line key=... with key=value
     if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' "s|^${key}=.*|${key}=${value}|" "$ENV_FILE"
+      sed -i '' "s|^${key}=.*|${key}=${escaped}|" "$ENV_FILE"
     else
-      sed -i "s|^${key}=.*|${key}=${value}|" "$ENV_FILE"
+      sed -i "s|^${key}=.*|${key}=${escaped}|" "$ENV_FILE"
     fi
   fi
 }
@@ -141,7 +155,9 @@ set_env_var SOURCE_ROOT_BASE "$SOURCE_ROOT_BASE"
 set_env_var ANTHROPIC_API_KEY "$ANTHROPIC_API_KEY"
 set_env_var GOOGLE_API_KEY   "$GOOGLE_API_KEY"
 set_env_var GITHUB_TOKEN     "$GITHUB_TOKEN"
-set_env_var ORG_GITHUB_ORG   "$GITHUB_ORG"
+set_env_var ORG_GITHUB_ORG   "$ORG_GITHUB_ORG"
+set_env_var AZURE_ORG        "$AZURE_ORG"
+set_env_var AZURE_ORG_PAT    "$AZURE_ORG_PAT"
 
 ok ".env written"
 

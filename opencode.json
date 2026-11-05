@@ -21,7 +21,8 @@
     }
   },
 	"plugins": [
-    "./.opencode/plugins/azure-devops/work-items" 
+    "./.opencode/plugins/azure-devops/work-items",
+    "./.opencode/plugins/azure-devops/projects"
   ],
   "permissions": [
     { "action": "shell", "resource": "*", "effect": "ask" },

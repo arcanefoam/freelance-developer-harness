@@ -59,6 +59,26 @@ function Read-Prompt($label, $default) {
     return $value
 }
 
+# ── Secret prompt helper: hidden input, shows whether a default exists ───────
+function Read-SecretPrompt($label, $default) {
+    if ($default) {
+        Write-Ask "${label} [saved, Enter to keep]:"
+    } else {
+        Write-Ask "${label}:"
+    }
+    $secure = Read-Host -AsSecureString
+    $ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+    try {
+        $value = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
+    } finally {
+        [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)
+    }
+    if ([string]::IsNullOrWhiteSpace($value)) {
+        return $default
+    }
+    return $value
+}
+
 # ── Start ─────────────────────────────────────────────────────────────────────
 Clear-Host
 Write-Host ""
@@ -108,9 +128,13 @@ $VENICE_API_KEY = Read-Prompt "Venice API key" $current_venice
 
 # ── Step 4: Project management ───────────────────────────────────────────────────
 Write-Header "Step 4 — Project management (optional)"
+Write-Host "  Input for the PAT is hidden, like a password."
 
 $current_az_org = Get-EnvVar "AZURE_ORG"
 $AZURE_ORG = Read-Prompt "Azure organization (e.g. https://dev.azure.com/myorg)" $current_az_org
+
+$current_az_pat = Get-EnvVar "AZURE_ORG_PAT"
+$AZURE_ORG_PAT = Read-SecretPrompt "Azure personal access token (hidden)" $current_az_pat
 
 # ── Write .env ────────────────────────────────────────────────────────────────
 Write-Header "Writing .env..."
@@ -120,8 +144,10 @@ Copy-Item $ENV_TEMPLATE $ENV_FILE -Force
 
 function Set-EnvVar($key, $value) {
     if (![string]::IsNullOrWhiteSpace($value)) {
+        # Escape '$' so -replace treats the value literally (PATs can contain it)
+        $escaped = $value -replace '\$', '$$'
         $content = Get-Content $ENV_FILE
-        $content = $content -replace "^$key=.*", "$key=$value"
+        $content = $content -replace "^$key=.*", "$key=$escaped"
         Set-Content -Path $ENV_FILE -Value $content
     }
 }
@@ -132,6 +158,7 @@ Set-EnvVar "STUDIO_EMAIL" $STUDIO_EMAIL
 Set-EnvVar "SOURCE_ROOT_BASE" $SOURCE_ROOT_BASE
 Set-EnvVar "VENICE_API_KEY" $VENICE_API_KEY
 Set-EnvVar "AZURE_ORG" $AZURE_ORG
+Set-EnvVar "AZURE_ORG_PAT" $AZURE_ORG_PAT
 
 Write-Ok ".env written"
 

@@ -1,5 +1,5 @@
 import { Plugin } from "@opencode/plugin" // v2 uses @opencode/plugin
-import AzureDevOps from "../common"
+import { AzureDevOps } from "../common"
 import { loadEnv, requireEnv } from "../env"
 
 export default Plugin.define({
@@ -14,11 +14,11 @@ export default Plugin.define({
 
       editor.add({
         name: "fetchWorkItems",
-        description: "Queries the Azure DevOps for existing Work Items",
+        description: "Queries the Azure DevOps for existing Work Items (Epics, Features, User Stories and Bugs)",
         input: {
           type: "object",
           properties: {
-            project: { type: "string", description: "The Azure Project slug" }
+            project: { type: "string", description: "The Azure Project name" }
           },
           required: ["project"],
           additionalProperties: false
@@ -30,13 +30,13 @@ export default Plugin.define({
         async execute(input: any) {
           try {
             loadEnv()
-            const url = requireEnv("AZURE_DEVOPS_URL")
-            const bearerToken = requireEnv("AZURE_DEVOPS_PAT")
-
+            const url = requireEnv("AZURE_ORG")
+            const bearerToken = requireEnv("AZURE_ORG_PAT")
             const devops = new AzureDevOps(url, input.project, bearerToken);                 
-						devops.banner("TEST")
-            const api = await devops.connect();
-						return { content: JSON.stringify(api.serverUrl) };
+						await devops.connect();
+						const wit = await devops.workItemTracking();
+						const items = await wit.all();
+						return { content: JSON.stringify(items, null, 2) };
           } catch (error: any) {
             return { content: `API Request failed: ${error.message}` };
           }

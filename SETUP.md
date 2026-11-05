@@ -4,24 +4,6 @@ The Freelance Developer Harness is a AI Agent operating system for running a str
 client projects. It gives you specialized roles (architects, designers, developers, QA, security) organized into three
 councils, enforced quality gates, and an automated PM-driven workflow.
 
-## Prerequisites
-
-The Agent uses the Azure CLI to get the state of work items related to the project.
-
-```bash
-# Install Azure DevOps extension (one-time)
-az extension add --name azure-devops
-
-# Login to Azure to save credentials, authentication is done via browser.
-az login
-
-# Set default organization and project
-az devops configure --defaults organization=https://dev.azure.com/<org> project=<project>
-
-# Verify authentication
-az devops user show --output table
-```
-
 ## Quick start
 
 ```bash

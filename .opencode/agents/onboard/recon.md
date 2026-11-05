@@ -42,7 +42,7 @@ If it exists, query the existing epics, features and user stories to get an idea
 ### Repository
 
 Check if the client has a repository in the source root base. 
-If not, confirm with the user to create one. 
+If not, inform the user. An missing repo is a valid finding, not a reason to stop.
 If yes, then:
 
 1. `git ls-files` first — it is cheaper and truer than recursive listing.
